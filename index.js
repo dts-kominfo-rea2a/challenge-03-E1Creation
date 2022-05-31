@@ -20,16 +20,35 @@ const dataBelanjaan = [
   },
 ];
 
+const displayListWithCondition = (items, condition) => {
+  const data = [];
+  let sumOfPrice = 0;
+  for(let i = 0 ; i < items.length; i++) {
+    const itemPrint = "- " + items[i].nama + " x " + items[i].kuantitas;
+    data.push(itemPrint);
+    sumOfPrice += items[i].harga * items[i].kuantitas;
+  }
+  if(condition == 0){
+    return data;
+  }
+  else {
+    return sumOfPrice;
+  }
+ 
+}
 // boleh dimodifikasi bila ingin menggunakan deklarasi fungsi yang normal
-const listBelanjaan = null;
+const listBelanjaan = (items) => {
+    return displayListWithCondition(items, 0);
+};
 
 // boleh dimodifikasi bila ingin menggunakan deklarasi fungsi yang normal
-const totalBelanjaan = null;
+const totalBelanjaan = (items) => {
+  return displayListWithCondition(items, 1);
+};
 
 // ! JANGAN DIMODIFIKASI
 const main = () => {
   console.log("Selamat datang customer");
-
   console.log("Belanjaan Anda adalah:");
   console.log(listBelanjaan?.(dataBelanjaan)?.join("\n"));
   console.log(
